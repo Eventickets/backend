@@ -2,12 +2,14 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  ManyToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
+import { City } from './city.entity';
 
 @Entity()
-export class EventStatus {
+export class Locations {
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -15,6 +17,9 @@ export class EventStatus {
     length: 100,
   })
   name: string;
+
+  @ManyToOne(() => City, (city) => city.id)
+  city_id: number;
 
   @CreateDateColumn()
   created_at: Date;

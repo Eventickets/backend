@@ -17,11 +17,11 @@ export class User {
   })
   mail: string;
 
-  @Column()
-  accept_terms_and_conditions: boolean;
+  // @Column()
+  // accept_terms_and_conditions: boolean;
 
-  @Column()
-  allow_sending_emails: boolean;
+  // @Column()
+  // allow_sending_emails: boolean;
 
   @Column({
     length: 45,

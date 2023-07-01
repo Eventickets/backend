@@ -2,14 +2,13 @@ import {
   Column,
   CreateDateColumn,
   Entity,
-  ManyToOne,
-  OneToMany,
+  JoinTable,
+  ManyToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
-import { EventStatus } from './eventStatus.entity';
-import { EventTypes } from './eventTypes.entity';
-import { EventPlaces } from './eventPlaces.entity';
+import { Locations } from './locations.entity';
+import { EventStatus } from 'src/enums/event-status.enum';
 
 @Entity()
 export class Event {
@@ -27,11 +26,11 @@ export class Event {
   @Column()
   end_date: Date;
 
-  @ManyToOne(() => EventStatus)
-  event_status_id: number;
-
-  @ManyToOne(() => EventTypes)
-  event_types_id: number;
+  @Column({
+    type: 'enum',
+    enum: EventStatus,
+  })
+  status: EventStatus;
 
   @CreateDateColumn()
   created_at: Date;
@@ -39,6 +38,7 @@ export class Event {
   @UpdateDateColumn()
   updated_at: Date;
 
-  @OneToMany(() => EventPlaces, (eventPlaces) => eventPlaces.event)
-  places: EventPlaces[];
+  @ManyToMany(() => Locations)
+  @JoinTable()
+  locations: Locations[];
 }

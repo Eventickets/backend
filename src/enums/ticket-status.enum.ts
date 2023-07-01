@@ -1,0 +1,9 @@
+export enum TicketStatus {
+  PUBLISHED = 1,
+  DELETED = 2,
+  SELLED_EVENTICKETS = 3,
+  SELLED_OTHER_APP = 4,
+  SELLED_OFFLINE = 5,
+  LAPSED = 6,
+  EVENT_CANCELED = 7,
+}

@@ -2,24 +2,29 @@ import {
   Column,
   CreateDateColumn,
   Entity,
-  OneToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
-import { Ticket } from './tickets';
 
 @Entity()
-export class Feedback {
+export class City {
   @PrimaryGeneratedColumn()
   id: number;
 
   @Column({
     length: 100,
   })
-  description: string;
+  name: string;
 
-  @OneToOne(() => Ticket)
-  ticket_id: number;
+  @Column({
+    length: 45,
+  })
+  province: string;
+
+  @Column({
+    length: 45,
+  })
+  state: string;
 
   @CreateDateColumn()
   created_at: Date;

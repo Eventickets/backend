@@ -6,16 +6,13 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
 } from 'typeorm';
-import { TicketStatus } from './ticketStatus.entity';
-import { User } from '../users';
+import { User } from './user.entity';
+import { TicketStatus } from 'src/enums/ticket-status.enum';
 
 @Entity()
 export class Ticket {
   @PrimaryGeneratedColumn()
   id: number;
-
-  @ManyToOne(() => TicketStatus)
-  ticket_status_id: number;
 
   @Column({
     length: 100,
@@ -24,6 +21,12 @@ export class Ticket {
 
   @ManyToOne(() => User)
   user_id: number;
+
+  @Column({
+    type: 'enum',
+    enum: TicketStatus,
+  })
+  status: TicketStatus;
 
   @ManyToOne(() => Event)
   event_id: number;
