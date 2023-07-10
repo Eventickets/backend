@@ -12,16 +12,22 @@ export class User {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @PrimaryColumn({
+  @Column({
     length: 100,
   })
   mail: string;
 
-  // @Column()
-  // accept_terms_and_conditions: boolean;
+  @Column()
+  accept_terms_and_conditions: boolean;
 
-  // @Column()
-  // allow_sending_emails: boolean;
+  @Column()
+  allow_sending_emails: boolean;
+
+  @Column()
+  password: string;
+
+  @Column()
+  refresh_token: string;
 
   @Column({
     length: 45,

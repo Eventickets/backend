@@ -8,6 +8,7 @@ import {
 } from 'typeorm';
 import { User } from './user.entity';
 import { TicketStatus } from 'src/enums/ticket-status.enum';
+import { Event } from './event.entity';
 
 @Entity()
 export class Ticket {
@@ -28,7 +29,7 @@ export class Ticket {
   })
   status: TicketStatus;
 
-  @ManyToOne(() => Event)
+  @ManyToOne(() => Event, event => event.id)
   event_id: number;
 
   @Column()

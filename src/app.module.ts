@@ -4,12 +4,22 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 
 import databaseConfig from './config/database.config';
 import { UsersModule } from './modules/users/users.module';
+import { AuthModule } from '@modules/auth/auth.module';
+import { APP_GUARD } from '@nestjs/core';
+import { AtGuard } from './common/guards';
 
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
     TypeOrmModule.forRootAsync(databaseConfig.asProvider()),
+    AuthModule,
     UsersModule,
+  ],
+  providers: [
+    {
+      provide: APP_GUARD,
+      useClass: AtGuard,
+    },
   ],
 })
 export class AppModule {}

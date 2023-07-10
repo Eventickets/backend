@@ -1,11 +1,15 @@
 import { Transform } from 'class-transformer';
-import { IsBoolean, IsEmail, IsNotEmpty, MaxLength } from 'class-validator';
+import { IsBoolean, IsEmail, IsNotEmpty, IsString, MaxLength } from 'class-validator';
 
-export class CreateUserDto {
+export class RegisterDto {
   @IsNotEmpty()
   @IsEmail()
   @MaxLength(100)
   mail: string;
+
+  @IsNotEmpty()
+  @IsString()
+  password: string;
 
   @IsNotEmpty()
   @IsBoolean()
@@ -17,8 +21,10 @@ export class CreateUserDto {
   allow_sending_emails: false;
 
   @MaxLength(45)
+  @IsString()
   instagram: string;
 
   @MaxLength(45)
+  @IsString()
   twitter: string;
 }
