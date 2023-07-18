@@ -1,5 +1,5 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
-import { UsersService } from '../services/users.service';
+import { Controller, Get } from '@nestjs/common';
+import { UsersService } from './users.service';
 import { GetCurrentUserId } from 'src/common/decorators';
 
 @Controller('users')

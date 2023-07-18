@@ -29,7 +29,7 @@ export class Ticket {
   })
   status: TicketStatus;
 
-  @ManyToOne(() => Event, event => event.id)
+  @ManyToOne(() => Event, (event) => event.id)
   event_id: number;
 
   @Column()

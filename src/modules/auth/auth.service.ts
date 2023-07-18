@@ -4,12 +4,11 @@ import { ConfigService } from '@nestjs/config';
 import { JwtService } from '@nestjs/jwt';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { RegisterDto } from '../dto/register.dto';
+import { RegisterDto } from './dto/register.dto';
 import * as argon from 'argon2';
-import { JwtPayload, Tokens } from '../types';
-import { LoginDto } from '../dto/login.dto';
+import { JwtPayload, Tokens } from './types';
+import { LoginDto } from './dto/login.dto';
 import { Not } from 'typeorm';
-
 
 @Injectable()
 export class AuthService {
@@ -27,7 +26,11 @@ export class AuthService {
     if (foundUser) throw new ForbiddenException('User exists');
 
     const password = await argon.hash(newUser.password);
-    const savedUser = this.userRepository.create({ ...newUser, password, refresh_token: '' });
+    const savedUser = this.userRepository.create({
+      ...newUser,
+      password,
+      refresh_token: '',
+    });
     const tokens = await this.getTokens(savedUser.id, savedUser.mail);
     const createdUser = await this.userRepository.save(savedUser);
     await this.updateRtHash(createdUser.id, tokens.refresh_token);
@@ -61,7 +64,7 @@ export class AuthService {
       },
       {
         refresh_token: '',
-      }
+      },
     );
     return true;
   }
@@ -71,7 +74,8 @@ export class AuthService {
       where: { id: userId },
     });
 
-    if (!foundUser || !foundUser.refresh_token) throw new ForbiddenException('Access Denied');
+    if (!foundUser || !foundUser.refresh_token)
+      throw new ForbiddenException('Access Denied');
 
     const isRtValid = await argon.verify(foundUser.refresh_token, rt);
 
