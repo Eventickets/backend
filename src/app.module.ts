@@ -9,6 +9,9 @@ import { APP_GUARD } from '@nestjs/core';
 import { AtGuard } from './common/guards';
 import { TicketsModule } from '@modules/tickets/tickets.module';
 import { EventsModule } from '@modules/events/events.module';
+import { LocationsModule } from '@modules/locations/locations.module';
+import { FeedbacksModule } from '@modules/feedbacks/feedbacks.module';
+import { CitiesModule } from '@modules/cities/cities.module';
 
 @Module({
   imports: [
@@ -18,6 +21,9 @@ import { EventsModule } from '@modules/events/events.module';
     UsersModule,
     TicketsModule,
     EventsModule,
+    LocationsModule,
+    FeedbacksModule,
+    CitiesModule,
   ],
   providers: [
     {
