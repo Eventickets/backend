@@ -9,5 +9,4 @@ import { FeedbacksService } from './feedbacks.service';
   controllers: [FeedbacksController],
   providers: [FeedbacksService],
 })
-
 export class FeedbacksModule {}

@@ -1,9 +1,7 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
-import { TicketsService } from './tickets.service';
-import { createTicketDto } from './create-ticket.dto';
-import { GetCurrentUserId, Public } from 'src/common/decorators';
+import { Controller } from '@nestjs/common';
+import { LocationsService } from './locations.service';
 
 @Controller('locations')
-export class TicketsController {
+export class LocationsController {
   constructor(private readonly locationsService: LocationsService) {}
 }

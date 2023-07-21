@@ -4,8 +4,10 @@ import { User } from './user.entity';
 import { Event } from './event.entity';
 import { Ticket } from './ticket.entity';
 import { City } from './city.entity';
+import { Province } from './province.entity';
+import { State } from './state.entity';
 
-const entities = [Event, Ticket, Locations, Feedback, User, City];
+const entities = [Event, Ticket, Locations, Feedback, User, City, Province, State];
 
-export { Event, Ticket, Locations, Feedback, User, City };
+export { Event, Ticket, Locations, Feedback, User, City, Province, State };
 export default entities;

@@ -9,5 +9,4 @@ import { CitiesService } from './cities.service';
   controllers: [CitiesController],
   providers: [CitiesService],
 })
-
 export class CitiesModule {}
